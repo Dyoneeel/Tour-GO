@@ -279,6 +279,12 @@
         }
         /* --- END DARK MODE IMPROVEMENTS --- */
     </style>
+
+        /* GitHub Pages/static-demo fix: hide empty server-side notification containers. */
+        .php-message:empty,
+        .alert:empty,
+        .alerts-container:empty { display: none !important; }
+
 </head>
 <body>
     <!-- HEADER: Copy from index.php and add dark mode toggle -->
@@ -504,5 +510,6 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 </script>
+    <script src="public/assets/js/notification-fix.js"></script>
 </body>
 </html>
