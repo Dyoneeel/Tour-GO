@@ -336,6 +336,12 @@
     color: var,--info-light;
 }
     </style>
+
+        /* GitHub Pages/static-demo fix: hide empty server-side notification containers. */
+        .php-message:empty,
+        .alert:empty,
+        .alerts-container:empty { display: none !important; }
+
 </head>
 <body>
     <header id="header">
@@ -424,13 +430,7 @@
                 </div>
 
                 <div class="alerts-container">
-                    
-                        <div class="alert alert-success fade-in"><i class="fas fa-check-circle"></i><div></div></div>
-                    
-                    
-                        <div class="alert alert-danger fade-in"><i class="fas fa-exclamation-circle"></i><div></div></div>
-                    
-                </div>
+</div>
                 
                 <div class="tab-content " id="business-tab">
                     <form method="POST" enctype="multipart/form-data">
@@ -1003,5 +1003,6 @@ const initialDocsData = ;
     }
 });
 </script>
+    <script src="../public/assets/js/notification-fix.js"></script>
 </body>
 </html>

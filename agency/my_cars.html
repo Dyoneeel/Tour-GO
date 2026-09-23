@@ -871,6 +871,12 @@
     color: var(--text-light);
 }
     </style>
+
+        /* GitHub Pages/static-demo fix: hide empty server-side notification containers. */
+        .php-message:empty,
+        .alert:empty,
+        .alerts-container:empty { display: none !important; }
+
 </head>
 <body>
 <header id="header">
@@ -933,17 +939,7 @@
                     
                 </div>
             </div>
-
-            
-                <div class="alert alert-danger"></div>
-            
-            
-                <div class="alert alert-success"></div>
-            
-
-            
-                
-                    <div class="alert alert-success">Vehicle has been added successfully!</div>
+<div class="alert alert-success">Vehicle has been added successfully!</div>
                 
                     <div class="alert alert-success">Vehicle has been updated successfully!</div>
                 
@@ -1386,5 +1382,6 @@
         </div>
     </div>
 </div>
+    <script src="../public/assets/js/notification-fix.js"></script>
 </body>
 </html>

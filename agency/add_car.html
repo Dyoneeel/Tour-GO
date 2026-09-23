@@ -304,6 +304,12 @@
             .dashboard-title { font-size: 1.4rem; }
         }
     </style>
+
+        /* GitHub Pages/static-demo fix: hide empty server-side notification containers. */
+        .php-message:empty,
+        .alert:empty,
+        .alerts-container:empty { display: none !important; }
+
 </head>
 <body>
     <header id="header" class="header-agency"> <div class="container">
@@ -960,5 +966,6 @@
 
     });
     </script>
+    <script src="../public/assets/js/notification-fix.js"></script>
 </body>
 </html>
