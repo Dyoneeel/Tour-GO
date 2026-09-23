@@ -322,6 +322,12 @@
             background-color: var(--dark-bg-hover);
         }
     </style>
+
+        /* GitHub Pages/static-demo fix: hide empty server-side notification containers. */
+        .php-message:empty,
+        .alert:empty,
+        .alerts-container:empty { display: none !important; }
+
 </head>
 <body>
     <div class="admin-dashboard">
@@ -398,17 +404,7 @@
                         </button>
                     </div>
                 </div>
-
-                
-                    <div class="alert alert-danger"></div>
-                
-                
-                
-                    <div class="alert alert-success"></div>
-                    
-                
-
-                <div class="stats-cards">
+<div class="stats-cards">
                     <div class="stat-card">
                         <i class="fas fa-flag" style="color: #ffc107;"></i>
                         <div class="stat-value">
@@ -727,5 +723,6 @@
             });
         }
     </script>
+    <script src="../public/assets/js/notification-fix.js"></script>
 </body>
 </html>

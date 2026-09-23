@@ -640,6 +640,12 @@
     appearance: none;
 }
     </style>
+
+        /* GitHub Pages/static-demo fix: hide empty server-side notification containers. */
+        .php-message:empty,
+        .alert:empty,
+        .alerts-container:empty { display: none !important; }
+
 </head>
 <body>
     <div class="admin-dashboard">
@@ -716,17 +722,7 @@
                     <h1 class="section-title">All Vehicles</h1>
                     <p class="section-description">View and manage all vehicles registered on the platform.</p>
                 </div>
-
-                
-                    <div class="alert alert-danger"></div>
-                
-                
-                    <div class="alert alert-success"></div>
-                
-
-                
-                    
-                        <div class="alert alert-success">Vehicle has been deleted successfully!</div>
+<div class="alert alert-success">Vehicle has been deleted successfully!</div>
                     
                         <div class="alert alert-danger">Error deleting vehicle. It might have active bookings.</div>
                     
@@ -944,5 +940,6 @@
             });
         });
     </script>
+    <script src="../public/assets/js/notification-fix.js"></script>
 </body>
 </html>

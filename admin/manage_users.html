@@ -427,6 +427,12 @@
         text-align: center;
     }
     </style>
+
+        /* GitHub Pages/static-demo fix: hide empty server-side notification containers. */
+        .php-message:empty,
+        .alert:empty,
+        .alerts-container:empty { display: none !important; }
+
 </head>
 <body>
 <div class="admin-dashboard">
@@ -1016,12 +1022,6 @@ document.querySelectorAll('.profile-menu').forEach(menu => {
         
         // Show notifications from PHP
         
-        showNotification(, 'success');
-        
-        
-        
-        showNotification(, 'error');
-        
         
         // Auto-refresh data every 30 seconds
         setInterval(function() {
@@ -1134,5 +1134,6 @@ document.querySelectorAll('.profile-menu').forEach(menu => {
         return 'ID,Email,Name,Type,Status,Date\n'; // Placeholder
     }
 </script>
+    <script src="../public/assets/js/notification-fix.js"></script>
 </body>
 </html>
