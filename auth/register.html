@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -90,6 +91,12 @@
             .register-form-container { padding: 30px 20px; }
         }
     </style>
+
+        /* GitHub Pages/static-demo fix: hide empty server-side notification containers. */
+        .php-message:empty,
+        .alert:empty,
+        .alerts-container:empty { display: none !important; }
+
 </head>
 <body>
 
@@ -386,5 +393,6 @@
             if (yearSpan && !yearSpan.textContent) yearSpan.textContent = new Date().getFullYear();
         });
     </script>
+    <script src="../public/assets/js/notification-fix.js"></script>
 </body>
 </html>
