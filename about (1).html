@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,8 +8,8 @@
     <title>About Us - TourGo Premium Car Rental Service</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="public/assets/css/styles.css">
-    <link rel="stylesheet" href="public/assets/css/style.css">
+    <link rel="stylesheet" href="../public/assets/css/styles.css">
+    <link rel="stylesheet" href="../public/assets/css/style.css">
     <style>
         /* Page Title Section */
         .page-title {
@@ -232,7 +234,6 @@
                 font-size: 24px;
             }
         }
-
         /* --- DARK MODE IMPROVEMENTS --- */
         :root {
             --dark-bg: #181c24;
@@ -244,26 +245,62 @@
             --dark-border: #2e3547;
         }
 
+        [data-theme="dark"] body,
+        [data-theme="dark"] {
+            background: var(--dark-bg) !important;
+            color: var(--dark-text) !important;
+        }
+
+        [data-theme="dark"] header,
+        [data-theme="dark"] .header-content {
+            background: var(--dark-bg-alt) !important;
+        }
 
         [data-theme="dark"] .nav-menu,
         [data-theme="dark"] .about-us-section,
-       
+        [data-theme="dark"] .our-commitment,
+        [data-theme="dark"] .content-card,
+        [data-theme="dark"] .feature-item {
+            background: var(--dark-bg-alt) !important;
+            color: var(--dark-text) !important;
+            border-color: var(--dark-border) !important;
+        }
+
         [data-theme="dark"] .nav-link,
         [data-theme="dark"] .footer-title,
-        [data-theme="dark"] .car-title,
         [data-theme="dark"] .section-title {
             color: var(--dark-text) !important;
         }
+
         [data-theme="dark"] .nav-link.active,
         [data-theme="dark"] .nav-link:hover {
             color: var(--dark-primary) !important;
+            background: transparent !important;
         }
-       
-    
+
+        [data-theme="dark"] .btn,
+        [data-theme="dark"] .btn-primary {
+            background: var(--dark-primary) !important;
+            color: #fff !important;
+            border: none !important;
+        }
+
+        [data-theme="dark"] .btn-outline {
+            background: transparent !important;
+            color: var(--dark-primary) !important;
+            border: 1.5px solid var(--dark-primary) !important;
+        }
+
+        [data-theme="dark"] .btn-outline:hover {
+            background: var(--dark-primary) !important;
+            color: #fff !important;
+        }
+
         [data-theme="dark"] .page-title {
             background: linear-gradient(135deg, var(--dark-primary) 0%, var(--dark-bg-alt) 100%) !important;
             color: #fff !important;
         }
+
         [data-theme="dark"] .circle-decoration {
             background-color: rgba(77, 148, 255, 0.08) !important;
         }
@@ -273,39 +310,91 @@
         [data-theme="dark"] .our-commitment h2 {
             color: var(--dark-primary) !important;
         }
+
         [data-theme="dark"] .about-intro p,
-        [data-theme="dark"] .our-commitment p {
+        [data-theme="dark"] .our-commitment p,
+        [data-theme="dark"] .content-card p,
+        [data-theme="dark"] .feature-item p {
             color: var(--dark-text-light) !important;
+        }
+
+        [data-theme="dark"] .profile-menu {
+            background: var(--dark-bg) !important;
+            border: 1px solid var(--dark-border) !important;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3) !important;
+        }
+
+        [data-theme="dark"] .profile-menu-item {
+            color: var(--dark-text) !important;
+            border-bottom-color: var(--dark-border) !important;
+        }
+
+        [data-theme="dark"] .profile-menu-item:hover {
+            background: var(--dark-accent) !important;
+        }
+
+        [data-theme="dark"] .footer-content {
+            border-color: var(--dark-border) !important;
+        }
+
+        [data-theme="dark"] .footer-text,
+        [data-theme="dark"] .footer-menu a {
+            color: var(--dark-text-light) !important;
+        }
+
+        [data-theme="dark"] .newsletter-input {
+            background: var(--dark-bg) !important;
+            border-color: var(--dark-border) !important;
+            color: var(--dark-text) !important;
+        }
+
+        [data-theme="dark"] .feature-item i {
+            color: var(--dark-primary) !important;
+        }
+
+        [data-theme="dark"] .content-card h3 {
+            color: var(--dark-primary) !important;
         }
         /* --- END DARK MODE IMPROVEMENTS --- */
     </style>
 </head>
 <body>
-    <!-- HEADER: Copy from index.php and add dark mode toggle -->
-    <header>
+    <header id="header">
         <div class="container">
             <div class="header-content">
                 <div class="logo">
-                    <a href="index.html">
-                        <i class="fas fa-car-side"></i>
+                    <a href="agency_dashboard.html"> <i class="fas fa-car-side"></i>
                         <span><span style="color: var(--text-dark);">Tour</span><span style="color: var(--text-light);">Go</span></span>
                     </a>
                 </div>
-                <ul class="nav-menu">
-                    <li><a href="index.html" class="nav-link">Home</a></li>
-                    <li><a href="cars.html" class="nav-link">Our Fleet</a></li>
-                    <li><a href="about.html" class="nav-link">About Us</a></li>
-                    <li><a href="contact.html" class="nav-link">Contact</a></li>
+                <ul class="nav-menu" id="mainNavMenu">
+                <li><a href="agency_dashboard.html" class="nav-link">Home</a></li>
+                <li><a href="my_cars.html" class="nav-link">My Fleet</a></li>
+                <li><a href="view_bookings.html" class="nav-link">My Bookings</a></li>
+                <li><a href="contact_support.html" class="nav-link">Contact</a></li>
                 </ul>
-                <div class="header-buttons">
+                <div class="header-actions">
                     <button class="theme-toggle" aria-label="Toggle Dark Mode" id="themeToggleBtn">
                         <i class="fas fa-moon"></i>
                     </button>
-                    <button class="btn btn-outline"><a href="auth/login.html">Sign In</a></button>
-                    <button class="btn btn-primary"><a href="auth/register.html">Register</a></button>
-                    <button class="menu-toggle" id="menuToggleBtn">
+                    <div class="profile-dropdown">
+                        <button class="profile-toggle" id="profileToggleBtn" type="button">
+                            <img src="" alt="Agency Logo">
+                            <span></span>
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                        <div class="profile-menu" id="profileMenu">
+                            <a href="agency_profile.html" class="profile-menu-item"><i class="fas fa-user-circle"></i><span>My Profile</span></a>
+                            <a href="my_cars.html" class="profile-menu-item"><i class="fas fa-car"></i><span>My Fleet</span></a>
+                            <a href="view_bookings.html" class="profile-menu-item"><i class="fas fa-calendar-alt"></i><span>Bookings</span></a>
+                            <a href="about.html" class="profile-menu-item"><i class="fas fa-chart-line"></i><span>About Us</span></a>
+                            <hr style="margin: 5px 0; border-color: var(--border-color-light, #eee);">
+                            <a href="../auth/logout.html" class="profile-menu-item"><i class="fas fa-sign-out-alt"></i><span>Logout</span></a>
+                        </div>
+                    </div>
+                    <div class="menu-toggle" aria-label="Toggle Menu">
                         <i class="fas fa-bars"></i>
-                    </button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -415,7 +504,7 @@
                 <div class="footer-links">
                     <h4 class="footer-title">Quick Links</h4>
                     <ul class="footer-menu">
-                        <li><a href="index.html">Home</a></li>
+                        <li><a href="customer_dasboard.html">Home</a></li>
                         <li><a href="cars.html">Our Fleet</a></li>
                         <li><a href="about.html">About Us</a></li>
                         <li><a href="contact.html">Contact Us</a></li>
@@ -471,6 +560,37 @@ document.addEventListener('DOMContentLoaded', function() {
         localStorage.setItem('theme', newTheme);
     });
 
+    // Profile Dropdown functionality
+    const profileToggle = document.getElementById('profileToggleBtn');
+    const profileMenu = document.getElementById('profileMenu');
+
+    if (profileToggle && profileMenu) {
+        // Toggle dropdown when clicking the button
+        profileToggle.addEventListener('click', function(e) {
+            e.stopPropagation();
+            profileMenu.classList.toggle('active');
+            
+            // Toggle arrow direction
+            const arrow = profileToggle.querySelector('.fa-chevron-down');
+            if (arrow) {
+                arrow.classList.toggle('fa-chevron-up');
+            }
+        });
+
+        // Close dropdown when clicking outside
+        document.addEventListener('click', function(e) {
+            if (!profileMenu.contains(e.target) && !profileToggle.contains(e.target)) {
+                profileMenu.classList.remove('active');
+                
+                // Reset arrow direction
+                const arrow = profileToggle.querySelector('.fa-chevron-down');
+                if (arrow) {
+                    arrow.classList.remove('fa-chevron-up');
+                }
+            }
+        });
+    }
+
     // --- MOBILE MENU TOGGLE ---
     const menuToggle = document.getElementById('menuToggleBtn');
     const navMenu = document.querySelector('.nav-menu');
@@ -503,6 +623,8 @@ document.addEventListener('DOMContentLoaded', function() {
         yearSpan.textContent = new Date().getFullYear();
     }
 });
+
+
 </script>
 </body>
 </html>
