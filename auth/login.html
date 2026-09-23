@@ -407,28 +407,6 @@
             width: 100%;
         }
 
-        /* Styles for PHP messages */
-        .php-message {
-            padding: 15px;
-            margin-bottom: 25px;
-            border-radius: 10px;
-            font-size: 15px;
-            font-weight: 500;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-        }
-
-        .php-message.error {
-            background-color: #fdf2f2;
-            color: #d32f2f;
-            border-left: 4px solid #ef5350;
-        }
-
-        .php-message.success {
-            background-color: #f0f9f4;
-            color: #1b5e20;
-            border-left: 4px solid #66bb6a;
-        }
-
         /* Responsive adjustments */
         @media (max-width: 1100px) {
             .login-container {
@@ -437,6 +415,31 @@
             .login-form-container {
                 padding: 50px 40px;
             }
+        }
+
+        .demo-message {
+            display: block;
+            padding: 12px 14px;
+            margin: 0 0 22px;
+            border-radius: 8px;
+            font-size: 14px;
+            line-height: 1.45;
+            border: 1px solid transparent;
+        }
+        .demo-message.success {
+            background: #eefaf1;
+            color: #176b2c;
+            border-color: #b9e6c4;
+        }
+        .demo-message.error {
+            background: #fff1f1;
+            color: #a61b1b;
+            border-color: #f3b7b7;
+        }
+        .demo-message.info {
+            background: #eef5ff;
+            color: #245a9b;
+            border-color: #bfd7f7;
         }
 
         @media (max-width: 900px) {
@@ -519,15 +522,7 @@
                         <h1 class="login-title">Welcome Back</h1>
                         <p class="login-subtitle">Please enter your credentials to continue</p>
                     </div>
-
-                    
-                        <div class="php-message success animate__animated animate__fadeInDown"></div>
-                    
-                    
-                        <div class="php-message error animate__animated animate__shakeX"></div>
-                    
-
-                    <form action="login.html" method="post" novalidate>
+<form action="login.html" method="post" novalidate>
                         <div class="form-group">
                             <label for="email" class="form-label">Email Address</label>
                             <input type="email" id="email" name="email" class="form-control" placeholder="name@example.com" required value="">
@@ -568,10 +563,22 @@
     <script src="../public/assets/js/script.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // Menu toggle functionality
+            const form = document.getElementById('login-form');
+            const message = document.getElementById('demo-message');
+            const emailInput = document.getElementById('email');
+            const passwordInput = document.getElementById('password');
+            const rememberInput = document.getElementById('remember');
+
+            function showMessage(text, type) {
+                if (!message) return;
+                message.hidden = false;
+                message.className = 'demo-message ' + type;
+                message.textContent = text;
+            }
+
+            // Menu toggle functionality (kept for consistency with the original page).
             const menuToggle = document.querySelector('.menu-toggle');
             const navMenu = document.querySelector('.nav-menu');
-
             if (menuToggle && navMenu) {
                 menuToggle.addEventListener('click', function() {
                     navMenu.classList.toggle('active');
@@ -583,10 +590,8 @@
                 });
             }
 
-            // Password toggle functionality
+            // Password visibility toggle.
             const togglePassword = document.querySelector('.toggle-password');
-            const passwordInput = document.querySelector('#password');
-
             if (togglePassword && passwordInput) {
                 togglePassword.addEventListener('click', function() {
                     const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
@@ -599,15 +604,71 @@
                 });
             }
 
-            // Footer year update
-            const yearSpan = document.getElementById('currentYear');
-            if (yearSpan && !yearSpan.textContent) {
-                yearSpan.textContent = new Date().getFullYear();
+            // Static GitHub Pages demo authentication using localStorage.
+            // No real account or password is sent anywhere.
+            const demoAccounts = {
+                'admin@tourgo.demo': { password: 'TourGOAdmin@2026!', role: 'admin', name: 'TourGO Administrator' },
+                'agency@tourgo.demo': { password: 'Demo1234!', role: 'agency', name: 'DriveHub Rentals' },
+                'customer@tourgo.demo': { password: 'Demo1234!', role: 'customer', name: 'Demo Customer' }
+            };
+
+            if (form) {
+                form.addEventListener('submit', function(event) {
+                    event.preventDefault();
+                    const email = emailInput.value.trim().toLowerCase();
+                    const password = passwordInput.value;
+
+                    if (!email || !emailInput.checkValidity()) {
+                        showMessage('Please enter a valid email address.', 'error');
+                        emailInput.focus();
+                        return;
+                    }
+                    if (!password) {
+                        showMessage('Please enter your password.', 'error');
+                        passwordInput.focus();
+                        return;
+                    }
+
+                    let account = demoAccounts[email];
+                    const stored = JSON.parse(localStorage.getItem('tourgo_demo_accounts') || '{}');
+                    if (!account && stored[email]) account = stored[email];
+
+                    if (!account || account.password !== password) {
+                        showMessage('Invalid demo credentials. Register a new account first, or use one of the demo accounts.', 'error');
+                        return;
+                    }
+
+                    const session = {
+                        email: email,
+                        role: account.role || 'customer',
+                        name: account.name || email.split('@')[0],
+                        signedInAt: new Date().toISOString()
+                    };
+                    localStorage.setItem('tourgo_demo_session', JSON.stringify(session));
+                    if (rememberInput && rememberInput.checked) {
+                        localStorage.setItem('tourgo_demo_remember', '1');
+                    } else {
+                        localStorage.removeItem('tourgo_demo_remember');
+                    }
+
+                    showMessage('Sign in successful. Opening your dashboard…', 'success');
+                    const destinations = {
+                        admin: '../admin/admin_dashboard.html',
+                        agency: '../agency/agency_dashboard.html',
+                        customer: '../customer/customer_dashboard.html'
+                    };
+                    setTimeout(function() {
+                        window.location.href = destinations[session.role] || destinations.customer;
+                    }, 650);
+                });
             }
-            
-            // Add focus effect for form fields
-            const formInputs = document.querySelectorAll('.form-control');
-            formInputs.forEach(input => {
+
+            // Footer year update.
+            const yearSpan = document.getElementById('currentYear');
+            if (yearSpan && !yearSpan.textContent) yearSpan.textContent = new Date().getFullYear();
+
+            // Add focus effect for form fields.
+            document.querySelectorAll('.form-control').forEach(function(input) {
                 input.addEventListener('focus', function() {
                     this.parentElement.classList.add('focused');
                 });
