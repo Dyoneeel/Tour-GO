@@ -448,6 +448,12 @@
         }
     }
 </style>
+
+        /* GitHub Pages/static-demo fix: hide empty server-side notification containers. */
+        .php-message:empty,
+        .alert:empty,
+        .alerts-container:empty { display: none !important; }
+
 </head>
 
 <body>
@@ -507,16 +513,7 @@
 
     <div class="modify-container">
         <h1><i class="fas fa-edit"></i> Modify Booking</h1>
-        
-        
-            <div class="alert alert-danger"></div>
-        
-        
-        
-            <div class="alert alert-success"></div>
-        
-
-        <div class="vehicle-summary">
+<div class="vehicle-summary">
             <img src="" 
                  alt="" 
                  class="vehicle-image">
@@ -832,5 +829,6 @@ document.querySelectorAll('input[name="extras[]"]').forEach(checkbox => {
     checkbox.addEventListener('change', calculateTotal);
 });
     </script>
+    <script src="../public/assets/js/notification-fix.js"></script>
 </body>
 </html>

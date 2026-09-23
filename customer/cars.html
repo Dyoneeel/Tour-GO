@@ -72,6 +72,12 @@
         @keyframes heartBeat { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.3); } }
 
     </style>
+
+        /* GitHub Pages/static-demo fix: hide empty server-side notification containers. */
+        .php-message:empty,
+        .alert:empty,
+        .alerts-container:empty { display: none !important; }
+
 </head>
 <body data-theme="light"> 
 <header>
@@ -491,5 +497,6 @@ document.addEventListener('DOMContentLoaded', function() {
     if(currentYearFooter) currentYearFooter.textContent = new Date().getFullYear();
 });
 </script>
+    <script src="../public/assets/js/notification-fix.js"></script>
 </body>
 </html>

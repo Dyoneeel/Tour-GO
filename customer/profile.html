@@ -216,6 +216,12 @@
         .slide-up { animation: slideUp 0.3s ease-out; }
         @keyframes slideUp { from { transform: translateY(30px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
     </style>
+
+        /* GitHub Pages/static-demo fix: hide empty server-side notification containers. */
+        .php-message:empty,
+        .alert:empty,
+        .alerts-container:empty { display: none !important; }
+
 </head>
 <body>
      <header id="header">
@@ -314,13 +320,7 @@
                 </div>
                 
                 <div class="alerts-container">
-                    
-                        <div class="alert alert-success fade-in"><i class="fas fa-check-circle"></i><div></div></div>
-                    
-                    
-                        <div class="alert alert-danger fade-in"><i class="fas fa-exclamation-circle"></i><div></div></div>
-                    
-                </div>
+</div>
 
                 <div class="tab-content " id="personal-tab">
                     <form method="POST" enctype="multipart/form-data">
@@ -865,5 +865,6 @@
         }
     });
     </script>
+    <script src="../public/assets/js/notification-fix.js"></script>
 </body>
 </html>
